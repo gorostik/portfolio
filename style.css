@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background-color: #171515; #0A3069*/
+    background-color: #010409ee;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(0, 174, 255);
+    background-image: url('background.png');
+    background-attachment: fixed;  
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(0, 174, 255);
+    border: none;
+    height: 2px;
+
+}
+.main-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+}
+
+.main-logo__abbreviation{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+#underscore{
+color: rgb(226, 226, 226);
+}
+
+.main-navigation__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-navigation__menu__element{
+    list-style-type: none;
+    width: 150px;
+    text-align: center;
+}
+
+.main-navigation__menu__element__link {
+    text-decoration: none;
+    color: rgb(0, 174, 255);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.main-navigation__menu__element__link:hover{
+   /* color: rgb(255, 0, 85);*/
+    color: rgb(226, 226, 226);
+}
+
+
+.greeting-block{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.greeting-block__greeting-content {
+    font-size: 50px;
+}
+
+.greeting-block__greeting-content__white{
+    color: rgb(226, 226, 226);
+}
+
+
+
+.imagine-developer__img{
+    width: 700px;
+}
+
+.introduce-block {
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.introduce-block__introduce-text{
+    font-size: 100px;
+}
+.introduce-block__introduce-text_middle-size{
+    font-size: 80px;
+}
+
+
+.motivated-transition{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+
+}
+
+.motivated-transition__text{
+    font-size: 40px;
+    margin-right: 100px;
+}
+.animated-dog{
+    width: 500px;
+}
+
+.main-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    margin-top: 100px;
+
+}
+
+.main-footer__text{
+    font-size: 25px;
+    font-weight: 800;
+}
+/******************************************/
+
+.professional-skillset{
+    margin-top: 100px;
+}
+
+.professional-skillset__header{
+    font-size: 40px;
+    text-align: center;
+}
+
+.professional-skillset__header_white{
+    color: rgb(226, 226, 226);
+}
+
+.block-skills{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.skill{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    border: 2px solid rgb(0, 174, 255);
+    margin: 10px 20px 10px 20px;
+}
+
+.skill__text{
+    font-size: 40px;
+    color: rgb(226, 226, 226);
+}
+/********************/
+.pet-projects{
+    margin-top: 100px;
+}
+
+.pet-projects__header{
+    font-size: 40px;
+    text-align: center;
+}
+
+.pet-projects__header_white{
+    color: rgb(226, 226, 226);
+}
+
+.block-projects{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.project{
+    display: flex;
+    
+    justify-content: center;
+    width: 300px;
+    height: 400px;
+    border: 5px solid rgb(0, 174, 255);
+    margin: 10px 20px 10px 20px;
+}
+
+.project__text{
+    margin-top: 30px;
+    font-size: 20px;
+    color: rgb(226, 226, 226);
+}
+/********************************/
+.main-resume{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-resume__block-resume{
+    width: 50%;
+    height: 700px;
+    border: 2px solid rgb(0, 174, 255);
+    color: rgb(226, 226, 226);
+}
+
+.main-resume__header{
+    margin-top: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.main-resume__inf{
+    margin: 0px 0px 0px 20px;
+}
+
+.main-resume__interval{
+    margin-top: 20px;
+    margin: 10px 0px 0px 20px;
+}
