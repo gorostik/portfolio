@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif; 
+            background: rgb(0,0,0);
+            background: radial-gradient(circle, rgba(0,0,0,0.17128849830948) 0%, rgba(255,255,255,1) 100%);}
+        hr{background-color: #FDDE55; border: none; height: 1px;}
+        .calculator{
+            width: 400px;height: 600px; border: 3px solid #FDDE55;
+            background-color: #18181A;border-radius: 30px;
+            -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 5px 10px 2px rgb(0, 0, 0);}
+        .output{
+            display: flex; justify-content: right;
+            align-items: center; margin-right: 20px;
+            height: 100px; font-size: 50px;
+            color: #FDDE55; user-select: none;}
+        .buttons{ 
+            margin-top: 60px; display: flex; justify-content: space-around;
+            align-items: center;flex-wrap: wrap;}
+        .button{
+            height: 40px;width: 40px; border: 1px solid black;
+            border-radius: 20px; font-size: 20px;
+            margin: 30px 30px 0px 30px;
+            background-color: #18181A; color: #FDDE55;
+            -webkit-box-shadow: 0px 5px 10px 2px rgba(255, 255, 255, 0.2) inset;
+            -moz-box-shadow: 0px 5px 10px 2px rgba(255, 255, 255, 0.2) inset;
+            box-shadow: 0px 5px 10px 2px rgb(0, 0, 0) inset;}
+
+        .button:hover{background-color: #242426;  }
+        .color-green{
+            background-color: #FDDE55; color: #18181A;
+            -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2) inset;
+            -moz-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2) inset;
+            box-shadow: 0px 5px 10px 2px rgb(0, 0, 0) inset;}
+        .color-green:hover{ background-color: #FDC93D; }
+    </style>
+
+</head>
+<body>
+    <section class="calculator">
+        <section class="output">0</section>
+        <hr>
+        <section class="buttons">
+            <button class="button ac">AC</button>
+            <button class="button addition-subtrac">+/-</button>
+            <button class="button percent"></button>
+            <button class="button color-green devision">/</button>
+
+            <button class="button num">7</button>
+            <button class="button num">8</button>
+            <button class="button num">9</button>
+            <button class="button color-green multiplication">x</button>
+
+            <button class="button num">4</button>
+            <button class="button num">5</button>
+            <button class="button num">6</button>
+            <button class="button color-green subtraction">-</button>
+
+            <button class="button num">1</button>
+            <button class="button num">2</button>
+            <button class="button num">3</button>
+            <button class="button color-green addition">+</button>
+
+            <button class="button num">0</button>
+            <button class="button opac"></button>
+            <button class="button point">.</button>
+            <button class="button color-green equally">=</button>
+
+        </section>
+    </section>
+<script>
+
+    //Главные переменные
+let firstNum = '',
+    onedNum = 0,
+    twoNum = 0,
+    pointState = false, 
+    signState = 'one',
+    operState = '',//devision, multiplication, subtraction, addition
+    output = document.querySelector('.output')
+
+//Нажатие на область калькулятора
+document.querySelector('.buttons').onclick = (event) => {
+
+    //Нажатие на кнопку AC
+    if(event.target.classList.contains('ac')){
+        firstNum = ''; onedNum = 0;
+        twoNum = 0; pointState = false; 
+        signState = 'one'; operState = '';
+        output.textContent = 0   
+    }
+    
+    //Нажатие на кнопку " +/- "
+    if(event.target.classList.contains('addition-subtrac')){
+        if(output.textContent == '+' || output.textContent == '-' || output.textContent == '*' || output.textContent == '/'){return}
+        output.textContent = '-' + output.textContent
+        firstNum *= -1
+    }
+
+    //Нажатие на " . "
+    if(event.target.classList.contains('point')){
+        if(output.textContent == 0 && pointState == false){
+            firstNum = '0.'
+            output.textContent = '0.'  
+            pointState = true }//<<< Если в на дисплее стоит цифра 0
+        else if(pointState == false && (output.textContent == '+' || output.textContent == '-' || output.textContent == '*' || output.textContent == '/')){
+            firstNum = '0.'
+            output.textContent = '0.'  
+            pointState = true }//<<< Если на дисплее стоят знаки + - * / 
+        else if (pointState == false){
+            firstNum = firstNum + event.target.textContent  
+            output.textContent = firstNum
+            pointState = true }//<<< Отслеживает поставлена ли точка на дисплее  
+}
+
+    //Нажатие на цифру "1 2 3 4 5 6 7 8 9 0"
+    if(event.target.classList.contains('num')){
+        if(firstNum == '0') { firstNum = '' }
+        firstNum = firstNum + event.target.textContent  
+        document.querySelector('.output').textContent = firstNum     
+    }
+
+    //Нажатие на любую кнопку
+    if(event.target.classList.contains('button')){
+        //Отслеживание длинны строки на дисплее
+        if(output.textContent.length > 12) { output.style.fontSize = '30px' }}
+ 
+    if(event.target.classList.contains('addition')){ operationASMD('addition', '+') }//Нажатие на " + "
+    if(event.target.classList.contains('subtraction')){ operationASMD('subtraction', '-') }//Нажатие на " - "
+    if(event.target.classList.contains('multiplication')){ operationASMD('multiplication', '*') }//Нажатие на " x "
+    if(event.target.classList.contains('devision')){ operationASMD('devision', '/') }//Нажатие на " / "
+
+    //Нажате на " = "
+    if(event.target.classList.contains('equally')){
+
+        if (operState == 'addition'){//Если была нажата " + " 
+            twoNum += +firstNum
+            firstNum = `${onedNum + twoNum}`
+            operationEqually()}
+
+        if (operState == 'subtraction'){//Если была нажата " - "
+            twoNum += +firstNum
+            firstNum = `${onedNum - twoNum}`
+            operationEqually()}
+
+        if (operState == 'multiplication'){//Если была нажата " x "
+            twoNum += +firstNum
+            firstNum = `${onedNum * twoNum}`
+            operationEqually()}
+
+        if (operState == 'devision'){//Если была нажата " / "
+            twoNum += +firstNum
+            firstNum = `${onedNum / twoNum}`
+            if(firstNum == 'Infinity' || firstNum == 'NaN'){
+                firstNum = '0'}
+            operationEqually()}
+        }
+    }
+
+function operationASMD(operation, sign){
+    if(signState == 'one'){
+        operState = operation
+        output.textContent = sign
+        onedNum += +firstNum
+        firstNum = ''
+        signState = 'two'
+        if(pointState == true){
+            pointState = false}}}
+
+function operationEqually(){
+    output.textContent = firstNum
+    signState = 'one'
+    onedNum = 0
+    twoNum = 0
+    operState = ''
+    if(output.textContent.length > 12){
+        output.style.fontSize = '30px'
+    } else {
+        output.style.fontSize = '50px'}}
+</script>
+    
+</body>
+</html>
