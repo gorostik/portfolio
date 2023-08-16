@@ -90,7 +90,8 @@ let firstNum = '',
     pointState = false, 
     signState = 'one',
     operState = '',//devision, multiplication, subtraction, addition
-    output = document.querySelector('.output')
+    output = document.querySelector('.output'),
+    additionSubtrac = true
 
 //Нажатие на область калькулятора
 document.querySelector('.buttons').onclick = (event) => {
@@ -106,8 +107,17 @@ document.querySelector('.buttons').onclick = (event) => {
     //Нажатие на кнопку " +/- "
     if(event.target.classList.contains('addition-subtrac')){
         if(output.textContent == '+' || output.textContent == '-' || output.textContent == '*' || output.textContent == '/'){return}
-        output.textContent = '-' + output.textContent
-        firstNum *= -1
+        
+        if(additionSubtrac == true){
+            output.textContent = '-' + output.textContent
+            firstNum *= -1
+            additionSubtrac = false    
+        }else{
+            firstNum *= -1
+            output.textContent = firstNum
+            additionSubtrac = true   
+        }
+        
     }
 
     //Нажатие на " . "
@@ -130,7 +140,7 @@ document.querySelector('.buttons').onclick = (event) => {
     if(event.target.classList.contains('num')){
         if(firstNum == '0') { firstNum = '' }
         firstNum = firstNum + event.target.textContent  
-        document.querySelector('.output').textContent = firstNum     
+        output.textContent = firstNum     
     }
 
     //Нажатие на любую кнопку
